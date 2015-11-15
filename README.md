@@ -1,7 +1,7 @@
 oh-my-zsh-git
 =============
 
-This plugin is an opinionated git prompt status, tailored for [**oh-my-zsh**](https://github.com/robbyrussell/oh-my-zsh). It is based on the work of [fabulous work](https://github.com/arialdomartini/oh-my-git/) of Arialdo Martini, but has been completely rewritten to avoid shortcoming and enable more features na despecially a nice oh-my-zsh integration.
+This plugin is an opinionated git prompt status, tailored for [**oh-my-zsh**](https://github.com/robbyrussell/oh-my-zsh). It is based on the work of [fabulous work](https://github.com/arialdomartini/oh-my-git/) of Arialdo Martini, but has been completely rewritten to avoid shortcoming and enable more features and especially a nice oh-my-zsh integration.
 
 In other word it is _oh_my_git_ for _oh_my_zsh_.
 
@@ -11,23 +11,23 @@ This derivative fork is taken from my pull request on his project [there](https:
 
 ## Reading the abstract
 
-This new git information script (`oh-my-git.plugin.zsh`) has a few bullet points
+This new git information script (`oh-my-git.plugin.zsh`) has a few bullet points:
 
-   * Show more information than usual git prompt status function here and there, thanks to Arialdo Martini for that
-   * Configurable color and symbols (or string)
-   * Configurable suffix and prefix
-   * Toggleable per git repository (`git config --get oh-my-zsh.hide-status`)
-   * Toggleable git repository symbol (`display_git_symbol`)
-   * Git _off_ flags (like content in stash or untracked files) can be either displayed or not (`use_color_off`) Toggleable empty spaces when git flag is on or off  (`print_unactive_flags_space`)
-   * Git _off_ flags can be ommited in the status (with both `use_color_off=false` and `print_unactive_flags_space=false`)
-   * Showing current git action (`REBASE-i`, `REBASE-m`, `REBASE`, `AM/REBASE`, `MERGING`, `BISECTING`, `CHERRY-PICKING`)
-   * External configuration is optional, defaults are already configured
+  * Show more information than usual git prompt status function here and there, thanks to Arialdo Martini for that
+  * Configurable color and symbols (or string)
+  * Configurable suffix and prefix
+  * Toggleable per git repository (`git config --get oh-my-zsh.hide-status`)
+  * Toggleable git repository symbol (`display_git_symbol`)
+  * Git _off_ flags (like content in stash or untracked files) can be either displayed or not (`use_color_off`) Toggleable empty spaces when git flag is on or off  (`print_unactive_flags_space`)
+  * Git _off_ flags can be ommited in the status (with both `use_color_off=false` and `print_unactive_flags_space=false`)
+  * Showing current git action (`REBASE-i`, `REBASE-m`, `REBASE`, `AM/REBASE`, `MERGING`, `BISECTING`, `CHERRY-PICKING`)
+  * External configuration is optional, defaults are already configured
 
-On a technical ground 
+On a technical ground:
 
-   * The shell script file and function are more human compatible. And this layout is directly working with oh-my-zsh plugins layout.
-   * While designed with oh-my-zsh in mind it is does not depend on a specific shell
-   * Doesn't leak variables
+  * The shell script file and function are more human compatible. And this layout is directly working with oh-my-zsh plugins layout.
+  * While designed with oh-my-zsh in mind it is does not depend on a specific shell
+  * Doesn't leak variables
 
 
 ## Install the git prompt status
