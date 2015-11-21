@@ -222,14 +222,15 @@ function oh_my_git_info {
         if [[ ${oh_my_git_statuses["number_of_commits_ahead"]} -eq 0 && ${oh_my_git_statuses["number_of_commits_behind"]} -gt 0 ]]; then
           oh_my_git_statuses["can_fast_forward"]=true
         fi
-      fi
 
-      if [[ ${oh_my_git_statuses["detached"]} == false ]]; then
-        oh_my_git_statuses["rebase_tracking_branch"]=$(git config --get branch.${oh_my_git_statuses["current_branch"]}.rebase 2> /dev/null)
-        if [[ -z ${oh_my_git_statuses["rebase_tracking_branch"]} ]]; then
-          oh_my_git_statuses["merge_tracking_branch"]=true
+        if [[ ${oh_my_git_statuses["detached"]} == false ]]; then
+          oh_my_git_statuses["rebase_tracking_branch"]=$(git config --get branch.${oh_my_git_statuses["current_branch"]}.rebase 2> /dev/null)
+          if [[ -z ${oh_my_git_statuses["rebase_tracking_branch"]} ]]; then
+            oh_my_git_statuses["merge_tracking_branch"]=true
+          fi
         fi
       fi
+
 
       oh_my_git_statuses["number_of_stashes"]="$(git stash list 2>/dev/null | grep '^stash@{[0-9]\+}:' | wc -l)"
       if [[ ${oh_my_git_statuses["number_of_stashes"]} -gt 0 ]]; then
