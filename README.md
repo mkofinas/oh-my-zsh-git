@@ -1,13 +1,11 @@
 oh-my-zsh-git
 =============
 
-This plugin is an opinionated git prompt status, tailored for [**oh-my-zsh**](https://github.com/robbyrussell/oh-my-zsh). It is based on the work of [fabulous work](https://github.com/arialdomartini/oh-my-git/) of Arialdo Martini, but has been completely rewritten to avoid shortcoming and enable more features and especially a nice oh-my-zsh integration.
+This plugin is an opinionated git prompt status, tailored for [**oh-my-zsh**](https://github.com/robbyrussell/oh-my-zsh). It is based on the [fabulous work](https://github.com/arialdomartini/oh-my-git/) of Arialdo Martini, but has been completely rewritten to avoid shortcoming and enable more features and especially a nice oh-my-zsh integration.
 
 In other word it is _oh_my_git_ for _oh_my_zsh_.
 
 This derivative fork is taken from my pull request on his project [there](https://github.com/arialdomartini/oh-my-git/pull/22).
-
-![oh-my-git in action](http://bric3.github.io/oh-my-zsh-git/images/oh-my-git.in.action.png)
 
 ## Reading the abstract
 
@@ -27,7 +25,7 @@ On a technical ground:
 
   * The shell script file and function are more human compatible. And this layout is directly working with oh-my-zsh plugins layout.
   * While designed with oh-my-zsh in mind it is does not depend on a specific shell
-  * Doesn't leak variables
+  * Leaks customizable variables only, organized in associative arrays. 
 
 
 ## Install the git prompt status
@@ -65,9 +63,9 @@ RPROMPT='$(oh_my_git_info)'
 
 ## Customize it
 
-In order to customize either the symbol, the color or if some symbol should be displayed define on of these varaible in your oh-my-zsh theme.
+In order to customize either the symbol, the color or if some symbol should be displayed define on of these variable in your oh-my-zsh theme.
 
-For example in your theme set the following variables to have a prompt info that will look like : `[(master ᄉ origin)]`
+For example in your theme set the following variables to have a prompt info that will look like : `[(master origin)]`
 
 ```bash
 # oh-my-git config
@@ -81,70 +79,64 @@ print_unactive_flags_space=false
 
 Here is the possible variables and flags with their default value
 
+## Options
+Most of the parameters used to display the git status info are exported to the
+shell environment. In order to be trully customizable, while not polluting the
+environment with variables, a set of associative arrays are used.
+More specifically, the following arrays are used:
 
-### Options
-
-option variable                    | value
----------------------------------- | ----------
-display_has_upstream               | `false`
-display_tag                        | `false`
-display_tag_name                   | `true`
-use_color_off                      | `false`
-print_unactive_flags_space         | `true`
-display_git_symbol                 | `true`
-display_git_current_action         | `false`
-
-### Symbols and related colors
-
-symbol and color variable          | value
----------------------------------- | ----------
-is_a_git_repo_symbol               | `±`
-is_a_git_repo_color                | `$violet`
-has_untracked_files_symbol         | `∿`
-has_untracked_files_color          | `$red`
-has_adds_symbol                    | `+`
-has_adds_color                     | `$yellow`
-has_deletions_symbol               | `-`
-has_deletions_color                | `$red`
-has_deletions_cached_symbol        | `✖`
-has_deletions_cached_color         | `$yellow`
-has_modifications_symbol           | `✎`
-has_modifications_color            | `$red`
-has_modifications_cached_symbol    | `☲`
-has_modifications_cached_color     | `$yellow`
-ready_to_commit_symbol             | `→`
-ready_to_commit_color              | `$green`
-is_on_a_tag_symbol                 | `⌫`
-is_on_a_tag_color                  | `$yellow`
-needs_to_merge_symbol              | `ᄉ`
-needs_to_merge_color               | `$yellow`
-has_upstream_symbol                | `⇅`
-has_upstream_color                 | `$on`
-has_no_upstream_color              | `$on`
-detached_symbol                    | `⚯`
-detached_color                     | `$red`
-detached_current_commit_color      | `$on`
-can_fast_forward_symbol            | `»`
-can_fast_forward_color             | `$on`
-has_diverged_symbol                | `Ⴤ`
-has_diverged_color                 | `$red`
-rebase_tracking_branch_symbol      | `↶`
-rebase_tracking_branch_color       | `$reset`
-merge_tracking_branch_symbol       | `ᄉ`
-merge_tracking_branch_color        | `$reset`
-should_push_symbol                 | `↑`
-should_push_color                  | `$on`
-has_stashes_symbol                 | `★`
-has_stashes_color                  | `$yellow`
-commits_behind_symbol              | `-`
-commits_behind_color               | `$reset`
-commits_ahead_symbol               | `+`
-commits_ahead_color                | `$reset`
-current_branch_color               | `$green`
-tag_name_color                     | `$yellow`
+`ZSH_THEME_GIT_SYMBOLS`
+For each variable, contains the symbol or string to be displayed if the
+condition described by the variable stands.
+`ZSH_THEME_GIT_COLORS`
+For each variable, contains the color of the symbol to be displayed.
+`ZSH_THEME_GIT_DISPLAY_ORDER`
+An ordered list showing the order in which the git status variables will appear.
+`ZSH_THEME_GIT_LINKS`
+Link to the variable describing the condition which must hold in order for the
+linking variable to appear in the prompt.
+`ZSH_THEME_GIT_MOVE_NUMBERS`
+Describes whether a numeric variable will appear in normal, superscript or
+subscript mode.
+`ZSH_THEME_GIT_OFF_STATUS`
+Describes how a variable whose flag is false will appear. The options include
+showing a colorless variable symbol, showing a space instead of the variable or
+showing nothing at all.
 
 
-### Default colors 
+### Symbols
+
+ZSH_THEME_GIT_SYMBOLS          | value
+------------------------------ | ----------
+is_a_git_repo                  | ` `
+is_hosted_in_github            | `  `
+is_clean                       | ` `
+has_untracked_files            | ` `
+has_adds                       | ` `
+has_deletions                  | ` `
+has_deletions_cached           | ` `
+has_modifications              | ` `
+has_modifications_cached       | ` `
+ready_to_commit                | ` `
+has_tag                        | ` `
+has_upstream                   | `⬍ `
+detached                       | ` `
+can_fast_forward               | ` `
+has_diverged                   | ` `
+rebase_tracking_branch         | ` `
+merge_tracking_branch          | ` `
+should_push                    | ` `
+has_stashes                    | ` `
+commits_behind                 | `-`
+commits_ahead                  | `+`
+branch_encapsulation           | `(`
+tag_encapsulation              | `[`
+sha_encapsulation              | `(`
+action_encapsulation           | `{`
+total_encapsulation            | ``
+
+
+### Default colors
 
 For the ZSH shell, the default values are the [ZSH prompt escape sequences](http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html) which are correctly interpreted to match the terminal width.
 
@@ -158,10 +150,41 @@ violet                             | `%F{magenta}`
 yellow                             | `%F{yellow}`
 reset                              | `%{%f%k%b%}`
 
+### Colors
 
+ZSH_THEME_GIT_COLORS               | Value
+---------------------------------- | -----------
+is_a_git_repo                      | `$on`
+is_hosted_in_github                | `$on`
+is_clean                           | `$green`
+has_untracked_files                | `$red`
+has_adds                           | `$yellow`
+has_deletions                      | `$red`
+has_deletions_cached               | `$yellow`
+has_modifications                  | `$red`
+has_modifications_cached           | `$yellow`
+ready_to_commit                    | `$green`
+has_tag                            | `$yellow`
+branch_encapsulation               | `$on`
+tag_encapsulation                  | `$on`
+sha_encapsulation                  | `$on`
+total_encapsulation                | `$on`
+action_encapsulation               | `$on`
+detached                           | `$red`
+short_sha                          | `$on`
+can_fast_forward                   | `$on`
+has_diverged                       | `$red`
+rebase_tracking_branch             | `$on`
+merge_tracking_branch              | `$on`
+should_push                        | `$on`
+has_stashes                        | `$yellow`
+number_of_stashes                  | `$yellow`
+commits_behind                     | `$on`
+number_of_commits_behind           | `$on`
+commits_ahead                      | `$on`
+number_of_commits_ahead            | `$on`
+current_branch                     | `$green`
+tag_name                           | `$yellow`
+short_upstream                     | `$on`
+git_action                         | `$red`
 
-## Show a demo
-
-A rather long demo with [asciinema](https://asciinema.org/a/10426)
-
-[![asciicast](https://asciinema.org/a/10426.png)](https://asciinema.org/a/10426)
