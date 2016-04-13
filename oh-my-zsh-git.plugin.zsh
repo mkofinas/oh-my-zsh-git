@@ -20,7 +20,7 @@
 #    * displays current git action (`REBASE-i`, `REBASE-m`, `REBASE`, `AM/REBASE`, `MERGING`, `BISECTING`, `CHERRY-PICKING`)
 #
 
-source "${ZSH_CUSTOM}/plugins/oh-my-git/oh-my-git-variables.zsh"
+source "${0:a:h}/oh-my-zsh-git-variables.zsh"
 
 function make_superscript() {
   declare -A SUPERSCRIPT

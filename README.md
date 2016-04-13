@@ -9,7 +9,7 @@ This derivative fork is taken from my pull request on his project [there](https:
 
 ## Reading the abstract
 
-This new git information script (`oh-my-git.plugin.zsh`) has a few bullet points:
+This new git information script (`oh-my-zsh-git.plugin.zsh`) has a few bullet points:
 
   * Show more information than usual git prompt status function here and there, thanks to Arialdo Martini for that
   * Configurable color and symbols (or string)
