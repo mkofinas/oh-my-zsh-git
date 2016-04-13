@@ -174,11 +174,11 @@ create_zsh_theme_git_symbols() {
   ZSH_THEME_GIT_OFF_STATUS["has_tag"]=""
   ZSH_THEME_GIT_OFF_STATUS["action_encapsulation"]=""
 }
-typeset -A ZSH_THEME_GIT_SYMBOLS
-typeset -A ZSH_THEME_GIT_COLORS
-typeset -A ZSH_THEME_GIT_DISPLAY_ORDER
-typeset -A ZSH_THEME_GIT_LINKS
-typeset -A ZSH_THEME_GIT_MOVE_NUMBERS
-typeset -A ZSH_THEME_GIT_OFF_STATUS
+typeset -gA ZSH_THEME_GIT_SYMBOLS
+typeset -gA ZSH_THEME_GIT_COLORS
+typeset -gA ZSH_THEME_GIT_DISPLAY_ORDER
+typeset -gA ZSH_THEME_GIT_LINKS
+typeset -gA ZSH_THEME_GIT_MOVE_NUMBERS
+typeset -gA ZSH_THEME_GIT_OFF_STATUS
 
 create_zsh_theme_git_symbols
