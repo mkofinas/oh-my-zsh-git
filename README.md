@@ -36,7 +36,7 @@ Install a clone of this repository in oh-my-zsh plugin [custom folder](https://g
 
 ```bash
 mkdir -p $ZSH_CUSTOM/plugins
-git clone git@github.com:bric3/oh-my-git-4-oh-my-zsh.git $ZSH_CUSTOM/plugins/oh-my-git
+git clone https://github.com/mkofinas/oh-my-zsh-git.git $ZSH_CUSTOM/plugins/oh-my-zsh-git
 ```
 
 This will make _oh-my-git_ available as a plugin for _oh-my-zsh_. Now you still need to activate it. In your `.zshrc` just activate the plugin by adding `oh-my-git` to the `plugins` variable :
